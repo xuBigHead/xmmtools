@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * <p>
- * 网址书签类型表 前端控制器
+ * 网址书签类型表 前端控制器v111222
  * </p>
  *
  * @author xmm
