@@ -10,6 +10,10 @@ public class GitTestClass {
         System.out.println("11点35分");
     }
     @Test
+    public void test111(){
+        System.out.println("test111");
+    }
+    @Test
     public void test000(){
         System.out.println("test000");
     }
