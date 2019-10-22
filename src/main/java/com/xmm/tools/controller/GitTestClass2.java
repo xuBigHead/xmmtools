@@ -7,4 +7,8 @@ public class GitTestClass2 {
     public void test222(){
         System.out.println("test000");
     }
+    @Test
+    public void test555(){
+        System.out.println("test555");
+    }
 }
