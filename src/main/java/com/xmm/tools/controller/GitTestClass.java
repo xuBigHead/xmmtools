@@ -17,4 +17,8 @@ public class GitTestClass {
     public void test000(){
         System.out.println("test000");
     }
+    @Test
+    public void test333(){
+        System.out.println("test333");
+    }
 }
