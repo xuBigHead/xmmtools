@@ -11,4 +11,8 @@ public class GitTestClass2 {
     public void test555(){
         System.out.println("test555");
     }
+        @Test
+    public void test444(){
+        System.out.println("test000");
+    }
 }
