@@ -14,5 +14,6 @@ public class GitTestClass2 {
         @Test
     public void test444(){
         System.out.println("test000");
+        System.out.println("2019年10月23日");
     }
 }
