@@ -20,5 +20,9 @@ public class GitTestClass {
     @Test
     public void test333(){
         System.out.println("test333");
+        System.out.println("2019年10月23日");
+        System.out.println("2019年10月23日");
+        System.out.println("2019年10月23日");
+        System.out.println("2019年10月23日");
     }
 }
