@@ -29,9 +29,9 @@ public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserA
         queryWrapper.eq("username",userAccount.getUsername());
         queryWrapper.eq("password",userAccount.getPassword());
         UserAccount userAccountFromDb = baseMapper.selectOne(queryWrapper);
-        Jedis jedis = redisUtil.getJedis();
-        String ping = jedis.ping();
-        System.err.println(ping);
+        //Jedis jedis = redisUtil.getJedis();
+        //String ping = jedis.ping();
+        //System.err.println(ping);
         return userAccountFromDb;
     }
 
