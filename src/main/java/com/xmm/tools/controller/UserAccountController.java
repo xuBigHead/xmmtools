@@ -1,19 +1,15 @@
 package com.xmm.tools.controller;
 
 
-import com.sun.net.httpserver.Authenticator;
 import com.xmm.tools.entity.UserAccount;
 import com.xmm.tools.result.R;
 import com.xmm.tools.service.UserAccountService;
 import com.xmm.tools.utils.JwtUtil;
-import com.xmm.tools.utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import sun.misc.PostVMInitHook;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
