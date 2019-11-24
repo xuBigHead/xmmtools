@@ -15,7 +15,7 @@ public class MaterialController {
     @Autowired
     MaterialService materialService;
     @GetMapping("/list")
-    public List<MaterialVO> getMaterialList(FilterMaterial filterMaterial){
+    public List<MaterialVO> getMaterialList(@RequestBody FilterMaterial filterMaterial){
         System.err.println(filterMaterial);
         return materialService.getMaterialList(filterMaterial);
     }
