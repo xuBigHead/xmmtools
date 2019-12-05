@@ -1,5 +1,6 @@
 package com.xmm.tools;
 
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.xmm.tools.utils.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;

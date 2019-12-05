@@ -24,4 +24,17 @@ public class RedisUtil {
     public Jedis getJedis(){
         return jedisPool.getResource();
     }
+    public void setKV(String key,String value){
+        Jedis jedis = jedisPool.getResource();
+        try {
+            jedis.set(key, value);
+        }catch (ArithmeticException e){
+            System.err.println("算术错误");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            jedis.close();
+        }
+    }
 }
