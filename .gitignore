@@ -1,5 +1,5 @@
 HELP.md
-spy.log
+*.log
 target/
 !**/src/main/**
 !**/src/test/**
