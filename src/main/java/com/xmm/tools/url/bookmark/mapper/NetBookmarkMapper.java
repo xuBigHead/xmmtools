@@ -1,7 +1,7 @@
 package com.xmm.tools.url.bookmark.mapper;
 
-import com.xmm.tools.url.bookmark.entity.NetBookMark;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xmm.tools.url.bookmark.entity.NetBookmark;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -12,6 +12,6 @@ import org.apache.ibatis.annotations.Param;
  * @author xmm
  * @since 2019-09-10
  */
-public interface NetBookMarkMapper extends BaseMapper<NetBookMark> {
-    void saveBookMark(@Param("id") Long id, @Param("name") String name);
+public interface NetBookmarkMapper extends BaseMapper<NetBookmark> {
+    void saveBookmark(@Param("id") Long id, @Param("name") String name);
 }

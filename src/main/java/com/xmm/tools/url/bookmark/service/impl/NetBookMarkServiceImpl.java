@@ -2,12 +2,13 @@ package com.xmm.tools.url.bookmark.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.xmm.tools.url.bookmark.entity.NetBookMark;
-import com.xmm.tools.url.bookmark.entity.NetBookMarkType;
-import com.xmm.tools.url.bookmark.entity.query.NetBookMarkQuery;
-import com.xmm.tools.url.bookmark.mapper.NetBookMarkMapper;
-import com.xmm.tools.url.bookmark.service.NetBookMarkService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.xmm.tools.common.result.R;
+import com.xmm.tools.url.bookmark.entity.NetBookMarkType;
+import com.xmm.tools.url.bookmark.entity.NetBookmark;
+import com.xmm.tools.url.bookmark.entity.query.NetBookMarkQuery;
+import com.xmm.tools.url.bookmark.mapper.NetBookmarkMapper;
+import com.xmm.tools.url.bookmark.service.NetBookMarkService;
 import com.xmm.tools.url.bookmark.service.NetBookMarkTypeService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,12 +30,12 @@ import java.io.*;
  * @since 2019-09-10
  */
 @Service
-public class NetBookMarkServiceImpl extends ServiceImpl<NetBookMarkMapper, NetBookMark> implements NetBookMarkService {
+public class NetBookMarkServiceImpl extends ServiceImpl<NetBookmarkMapper, NetBookmark> implements NetBookMarkService {
     @Autowired
     NetBookMarkTypeService bookMarkTypeService;
     @Override
-    public void bookMarkByPage(Page<NetBookMark> netBookMarkPage, NetBookMarkQuery query) {
-        QueryWrapper<NetBookMark> queryWrapper = new QueryWrapper<>();
+    public void bookMarkByPage(Page<NetBookmark> netBookMarkPage, NetBookMarkQuery query) {
+        QueryWrapper<NetBookmark> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByAsc("sort");
         // 获取query中的条件
         String name = query.getName();
@@ -51,7 +52,7 @@ public class NetBookMarkServiceImpl extends ServiceImpl<NetBookMarkMapper, NetBo
 
     @Override
     public void removeBookMarkOfType(String typeId) {
-        QueryWrapper<NetBookMark> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<NetBookmark> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("type_id", typeId);
         baseMapper.delete(queryWrapper);
     }
@@ -91,7 +92,7 @@ public class NetBookMarkServiceImpl extends ServiceImpl<NetBookMarkMapper, NetBo
                         bookMarkTypeService.save(bookMarkType);
                         bookMarkTypeId = bookMarkType.getId();
                         for (Element bookMark : bookMarks) {
-                            NetBookMark netBookMark = new NetBookMark();
+                            NetBookmark netBookMark = new NetBookmark();
                             String linkHref = bookMark.attr("href");
                             String linkText = bookMark.text();
                             netBookMark.setNetUrl(linkHref);
@@ -118,13 +119,13 @@ public class NetBookMarkServiceImpl extends ServiceImpl<NetBookMarkMapper, NetBo
 
     @Override
     public void removeAllBookMark() {
-        QueryWrapper<NetBookMark> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<NetBookmark> queryWrapper = new QueryWrapper<>();
         queryWrapper.isNull("user_id");
         baseMapper.delete(queryWrapper);
     }
 
     @Override
-    public void saveBookMark(NetBookMark bookMark) {
+    public void saveBookMark(NetBookmark bookMark) {
         String typeId = bookMark.getTypeId();
         baseMapper.insert(bookMark);
         NetBookMarkType bookMarkType = bookMarkTypeService.getById(typeId);
@@ -135,14 +136,20 @@ public class NetBookMarkServiceImpl extends ServiceImpl<NetBookMarkMapper, NetBo
 
     @Override
     public void removeBookMarkById(String id) {
-        QueryWrapper<NetBookMark> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<NetBookmark> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("id", id);
-        NetBookMark netBookMark = baseMapper.selectOne(queryWrapper);
+        NetBookmark netBookMark = baseMapper.selectOne(queryWrapper);
         NetBookMarkType bookMarkType = bookMarkTypeService.getById(netBookMark.getTypeId());
         // 删除书签时将该书签类型的书签数量减一
         bookMarkType.setAmount(bookMarkType.getAmount() - 1);
         bookMarkTypeService.updateById(bookMarkType);
         baseMapper.delete(queryWrapper);
+    }
+
+    @Override
+    public R saveBookmark(NetBookmark bookMark) {
+
+        return null;
     }
 
     public static void inputStreamToFile(InputStream ins, File file) {
