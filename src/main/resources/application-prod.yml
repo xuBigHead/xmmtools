@@ -1,0 +1,8 @@
+# 生产连接的数据库
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.108.87.253:3306/practice?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 340823
+    type: com.alibaba.druid.pool.DruidDataSource

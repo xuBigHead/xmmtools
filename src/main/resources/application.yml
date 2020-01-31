@@ -1,0 +1,26 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: tools
+  profiles:
+    active: dev
+  jackson:
+    # 返回json的全局时间格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 39.108.87.253
+    port: 6379
+    database: 0
+    password: 340823
+    timeout: 2000
+
+mybatis-plus:
+  mapper-locations: classpath:com/xmm/tools/mapper/xml/*.xml
+  global-config:
+    db-config:
+      # 指定删除和不删除的状态
+      logic-delete-value: 1
+      logic-not-delete-value: 0
