@@ -18,7 +18,7 @@ spring:
     timeout: 2000
 
 mybatis-plus:
-  mapper-locations: classpath:com/xmm/tools/mapper/xml/*.xml
+  mapper-locations: classpath:com/xmm/tools/**/mapper/*.xml
   global-config:
     db-config:
       # 指定删除和不删除的状态
